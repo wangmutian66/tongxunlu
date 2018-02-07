@@ -70,10 +70,12 @@ public class QuickIndexBar extends View {
         super.onDraw(canvas);
         for(int i=0;i<indexArr.length;i++){
             Log.e("字母",indexArr[i]);
+            paint.setColor((lastindex==i)?Color.BLACK:Color.WHITE);
             float x = measureWidth/2;
             float y =cellheight/2 + getTextHeight(indexArr[i])/2 + i*cellheight;
             //canvas.drawText 绘画的是文字的底部的坐标
             canvas.drawText(indexArr[i],x,y,paint);
+
         }
     }
 
@@ -115,6 +117,10 @@ public class QuickIndexBar extends View {
                 lastindex = -1;
                 break;
         }
+
+        //引起重绘 回调 onDraw
+        invalidate();
+
         return true;
     }
 
