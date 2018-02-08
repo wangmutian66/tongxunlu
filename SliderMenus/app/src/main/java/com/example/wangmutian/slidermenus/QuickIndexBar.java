@@ -114,6 +114,7 @@ public class QuickIndexBar extends View {
                 break;
             case MotionEvent.ACTION_UP:
                 //抬起后要重置一下
+                listener.onTouchEnd();
                 lastindex = -1;
                 break;
         }
@@ -136,7 +137,7 @@ public class QuickIndexBar extends View {
      */
     public interface OnTouchLetterListener{
         void onTouchLetter(String letter);
-
+        void onTouchEnd();
     }
 
 }
